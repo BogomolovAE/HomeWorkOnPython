@@ -1,0 +1,61 @@
+functions
+
+def addstudent(studentlist, journal):
+    studentlist.append(input('Введите имя '))
+    journal.append([])
+    # i for i in range(len(journal[0]))
+def addsubject(subjectlist, journal):
+    subjectlist.append(input('Введите  предмет '))
+    for student in journal:
+        student.append('')
+# def journalinit(studentlist, subjectlist):
+    # journal = [(i for i in range(len(studentlist))) for j in range(len(subjectlist))]
+    # return journal
+def addgrade(studentlist, subjectlist, journal):
+    student = studentlist.index(str(input('Введите имя ')))
+    subject = subjectlist.index(str(input('Введите предмет ')))
+    grade = str(input('Введите оценку '))
+    journal[student][subject].append(grade)
+    return journal
+def printstudents(list):
+    for student in list:
+        print(student)
+def printgrades(studentlist, subjectlist, journal):
+    student = studentlist.index(str(input('Введите имя ')))
+    for i in range(len(subjectlist)):
+        print(subjectlist[i] + '+' + journal[student][i])
+def help():
+    print("addstudent - добавление студента")
+    print("addsubject - добавление предмета")
+    print("addgrade - добавление оценки")
+    print("printstudents - список учеников
+
+
+
+Controller:
+
+from functions import *
+
+help()
+students = []
+subjects = []
+journal = []
+command = str(input('Введите команду '))
+while command != 'exit':
+    if command == 'addstudent':
+        addstudent(students, journal)
+        print(students)
+        print(journal)
+    elif command == 'addsubject':
+        addsubject(subjects, journal)
+        print(subjects)
+        print(journal)
+    elif command == 'addgrade':
+        journal = addgrade(students, subjects, journal)
+    elif command == 'printstudents':
+        printstudents(students)
+    elif command == 'printgrades':
+        printgrades(students, subjects, journal)
+    elif command == 'help':
+        help()   
+    command = str(input('Введите команду '))
