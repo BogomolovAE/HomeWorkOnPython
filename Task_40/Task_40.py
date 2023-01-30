@@ -15,7 +15,7 @@
 textString=input('Input you string: ')
 
 
-def Convert(text):
+def Encrypt(text):
     currentIndex=0
     newText=[['',0]]
     for i in text:
@@ -32,17 +32,40 @@ def Recover(newText):
     for i in range(len(newText)):
         for j in range(newText[i][1]):
             print(newText[i][0],end='')
+    print()
 
-        
-convertedText=Convert(textString)
 
+def Convert(textToConvert):
+    enteredText=[['',0]]
+    numStart=-1
+    numEnd=0
+    currentSymbolPosition=0
+    for i in range(len(textToConvert)):
+        if textToConvert[i].isdigit():
+            if numStart==-1:
+                numStart=i
+            numEnd=i+1
+        else:
+            enteredText.append([textToConvert[i],0])
+            currentSymbolPosition+=1
+            enteredText[currentSymbolPosition][1]=int(textToConvert[numStart:numEnd])
+            numStart=-1
+    enteredText.pop(0)
+    return enteredText
+
+
+convertedText=Encrypt(textString)
+print('Encrypted text:')
 for i in range(len(convertedText)):
-    print(convertedText[i][0]+str(convertedText[i][1]),end='')
+    print(str(convertedText[i][1])+convertedText[i][0],end='')
 
 print()
 print('Recovered text:')
-
 Recover(convertedText)
+newRLEString=input("Input string to decode: ")
+print('Recovered text:')
+Recover(Convert(newRLEString))
+
 
 
 
