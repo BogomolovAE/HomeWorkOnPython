@@ -11,7 +11,6 @@ class Game:
     def __init__(self,gridsize) :
         self.gridSize=gridsize
         self.grid=[]
-        print(len(self.grid))
         self.currentPlayer=0
         self.round=1        
         self.display=Display(self)
