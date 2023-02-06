@@ -1,0 +1,6 @@
+Available commands:
+add - to add new record
+print_by_id - to show all records, sorted by id
+print_by_name - to show all records, sorted by name
+print_name_only - to show only names
+exit - to exit program
