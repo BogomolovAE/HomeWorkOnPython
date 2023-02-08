@@ -1,0 +1,11 @@
+1 addstudent - add new student
+2 adddiscipline - add new discipline
+3 addgrade - add new grade
+4 printstudents - print list of student's 
+5 printgrades - print student's grades
+6 randomgenerator - generate and add to journal: students, disciplines and grades in qantity that you entered
+7 average in discipline for one student - print average grade in discipline for one student
+8 average in discipline at all - print average grade in discipline at school
+9 quantity of medalists - print quantity of medalists at school
+10 help - print this message
+11 exit - exit program

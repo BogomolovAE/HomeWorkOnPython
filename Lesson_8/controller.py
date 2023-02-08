@@ -1,28 +1,68 @@
-from functions import *
+# Основное дз(из семинара):
+# Создать информационную систему позволяющую работать с учениками школы
+# функции
+# Добавление нового студента (Поля - имя, фамилия)
+# Добавление предмета (добавляется всем ученикам сразу)
+# Добавление оценки ученику по предмету (выбираем ученика(из существующих), выбираем предмет(из сущ.),пишем оценку )
+# Показ списка учеников (имена фамилия)
+# Показ листа оценок конкретного ученика
+# Выход из программы
+# Достаточно хранить данные в переменной
 
-help()
-students = []
-subjects = []
-journal = []
-command = input('Введите команду ')
+# Доп*:
+# 1) Добавить функцию генерации сразу ста учеников и записи их в журнал
+# (имя - рандомное из списка нескольких имен
+# фамилия - рандомная из списка нескольких фамилий
+# название предмета - рандом из списка с предметами
+# оценка - рандом от 1 до 5)
+# 2) Вывод средней оценки ученика по одному предмету
+# 3) Вывод среднего балла по школе по конкретному предмету
+# 4)Вывод количества учеников претендующих на золотую медаль (все оценки либо 4 либо 5)
+# Добавить хранение в файле, и импорт из файла
+
+
+
+import model
+import view
+commands=['add student',
+          'add discipline',
+          'add grade',
+          'print students',
+          'print grades',
+          'random generator',
+          'average in discipline for one student',
+          'average in discipline at all',
+          'quantity of medalists',
+          'help',
+          'exit']
+
+model.Init()
+command=''
+view.printList(commands) 
 while command != 'exit':
-    try:
-        if (command == 'addstudent') or (command == '1'):
-            addstudent(students, journal)
-            print(students)
-            print(journal)
-        elif (command == 'addsubject') or (command == '2'):
-            addsubject(subjects, journal)
-            print(subjects)
-            print(journal)
-        elif (command == 'addgrade') or (command == '3'):
-            addgrade(students, subjects, journal)
-        elif (command == 'printstudents') or (command == '4'):
-            printstudents(students)
-        elif (command == 'printgrades') or (command == '5'):
-            printgrades(students, subjects, journal)
-        elif command == 'help':
-            help()   
-        command = input('Введите команду ')
-    except Exception:
-        command = input('Будьте внимательнее! Введите команду повторно ')
+       
+    command=view.GettingNumberFromList('command',commands)
+    if command == 0:
+        model.AddStudent(view.readInput("student name"))
+    elif command == 1:
+        model.AddDiscipline(view.readInput("name of discipline"))
+    elif command == 2:
+        model.AddGrade()
+    elif command == 3:
+        model.PrintStudents()
+    elif command == 4:
+        model.PrintGrades()
+    elif command == 5:
+        model.RandomGenerator()
+    elif command == 6:
+        model.AverageInDiscipline()   
+    elif command == 7:
+        model.AverageInDisciplineAll()    
+    elif command == 8:
+        model.QuantityOfMedalists()       
+    elif command == 9:
+        view.help() 
+        continue
+    elif command == 10:
+        break
+    view.printList(commands)
